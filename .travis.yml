@@ -8,16 +8,21 @@ dist: trusty
 
   - '7.1'
 
-before_srcipt:
+before_script:
+    - composer install --prefer-dist > /dev/null
+    - export APP_ENV=testing
 
-  - composer install --dev --prefer-source --no-interaction
+unitTesting:
+    script:
+        - echo "Running PHP Unit tet"
+        - php vendor/bin/phpunit --colors --debug --coverage-text
+codeSniffer:
+    script:
+        - php vendor/bin/phpcs --config-set ignore_warnings_on_exit 1
+        - php vendor/bin/phpcs --standard=PSR2 --ignore=app/views,app/storage,app/tests,app/filters.php,app/routes.php,packages/,app/Providers/,app/Console/,app/services/,http/Middleware/,app/Exceptions/,app/Events/ -w --colors app/
+    allow_failure: true
 
-  - cp .env.travis .env
-
-  - php artisan key:generate
-
-script:
-
-  - vendor/bin/phpunit
-
-  - vendor/bin/phpcs app --standard=PSR2
+phpMess:
+    script:
+        - php vendor/bin/phpmd app/ text cleancode,controversial,codesize,design,naming,unusedcode --exclude=app/views,app/storage,app/tests,app/filters.php,app/routes.php,packages/,app/Providers/,app/Console/,app/services/,http/Middleware/,app/Exceptions/,app/Events/
+    allow_failure: true
