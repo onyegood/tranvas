@@ -9,8 +9,12 @@ dist: trusty
   - '7.1'
 
 before_script:
-    - composer install --prefer-dist > /dev/null
-    - export APP_ENV=testing
+
+  - composer install --dev --prefer-source --no-interaction
+
+  - copy .env.travis .env
+
+  - php artisan key:generate
 
 unitTesting:
     script:
