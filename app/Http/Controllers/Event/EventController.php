@@ -9,7 +9,8 @@ use App\Models\Event\Event;
 
 class EventController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $today = Carbon::today()->format('Y-m-d');
 
