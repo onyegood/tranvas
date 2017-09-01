@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsModelsTable extends Migration
+class CreateLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEventsModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events_models', function (Blueprint $table) {
+        Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateEventsModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events_models');
+        Schema::dropIfExists('logs');
     }
 }

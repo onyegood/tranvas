@@ -12,6 +12,8 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+use App\User;
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -22,3 +24,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+//Event Factory
+$factory->define(App\Models\Event\Event::class, function (Faker\Generator $faker) {
+    $start_date = \Carbon\Carbon::now()->addDays($faker->randomElement([1,2,3,4,5,6,7,8,9]));
+    $end_date = $start_date->copy()->addDays($faker->randomElement([1,2,3,4,5,6,7,8,9]));
+    return [
+        'title' => $faker->sentence(5, true),
+        'description' => $faker->paragraphs(5, true),
+        'address' => $faker->address,
+        'lat' => $faker->latitude,
+        'long' => $faker->longitude,
+        'start_date' => $start_date->format('Y-m-d'),
+        'end_date' => $end_date->format('Y-m-d'),
+        'user_id' => factory(User::class)->create()->id,
+    ];
+});
+//Event Factory

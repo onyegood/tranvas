@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Event;
+namespace App\Models\Log;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EventLog extends Model
+class Log extends Model
 {
     protected $guarded = [];
 }
