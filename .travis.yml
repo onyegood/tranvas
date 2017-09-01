@@ -3,6 +3,7 @@ language: php
 php:
 
 dist: trusty
+dist: precise
 
   - '7.0'
 
@@ -16,9 +17,8 @@ before_script:
 
   - php artisan key:generate
 
-  script:
+script:
 
     - vendor/bin/phpunit
 
     - vendor/bin/phpcs app --standard=PSR2 --
-    allow_failure: true
