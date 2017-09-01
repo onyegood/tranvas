@@ -16,17 +16,9 @@ before_script:
 
   - php artisan key:generate
 
-unitTesting:
-    script:
-        - echo "Running PHP Unit tet"
-        - php vendor/bin/phpunit --colors --debug --coverage-text
-codeSniffer:
-    script:
-        - php vendor/bin/phpcs --config-set ignore_warnings_on_exit 1
-        - php vendor/bin/phpcs --standard=PSR2 --ignore=app/views,app/storage,app/tests,app/filters.php,app/routes.php,packages/,app/Providers/,app/Console/,app/services/,http/Middleware/,app/Exceptions/,app/Events/ -w --colors app/
-    allow_failure: true
+  script:
 
-phpMess:
-    script:
-        - php vendor/bin/phpmd app/ text cleancode,controversial,codesize,design,naming,unusedcode --exclude=app/views,app/storage,app/tests,app/filters.php,app/routes.php,packages/,app/Providers/,app/Console/,app/services/,http/Middleware/,app/Exceptions/,app/Events/
+    - vendor/bin/phpunit
+
+    - vendor/bin/phpcs app --standard=PSR2 --
     allow_failure: true
