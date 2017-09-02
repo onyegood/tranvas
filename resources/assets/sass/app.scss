@@ -7,3 +7,31 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//Onye custom css
+@for $i from 1 through 10 {
+  .margin-bottom-#{$i * 10} {
+    margin-bottom: #{$i * 10}px;
+  }
+  .margin-top-#{$i * 10} {
+    margin-top: #{$i * 10}px;
+  }
+  .margin-left-#{$i * 10} {
+    margin-left: #{$i * 10}px;
+  }
+  .margin-right-#{$i * 10} {
+    margin-right: #{$i * 10}px;
+  }
+  .padding-bottom-#{$i * 10} {
+    padding-bottom: #{$i * 10}px;
+  }
+  .padding-top-#{$i * 10} {
+    padding-top: #{$i * 10}px;
+  }
+  .padding-left-#{$i * 10} {
+    padding-left: #{$i * 10}px;
+  }
+  .padding-right-#{$i * 10} {
+    padding-right: #{$i * 10}px;
+  }
+}
