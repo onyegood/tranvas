@@ -18,7 +18,7 @@ class Event extends Model
     ];
 
     protected $guarded = [];
-    
+
     //Add relationship between event and user (In other words each event belong to a user)
     public function creator()
     {

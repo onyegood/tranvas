@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-COMPATIBLE" content="ie=edge">
         <title>My App</title>
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        @yield('header-styles')
     </head>
 
 
@@ -14,5 +15,6 @@
 
         @yield('content')
 
+        @yield('footer-script')
     </body>
 </html>

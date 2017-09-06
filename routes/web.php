@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/events/list-event', 'Event\EventController@index')->name('events');
+Route::get('/events/view/{event}', 'Event\EventController@view')->name('view-event');
