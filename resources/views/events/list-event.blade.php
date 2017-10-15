@@ -1,4 +1,4 @@
-@extends('layout.html')
+@extends('layouts.html')
 
 @section('content')
 
@@ -6,9 +6,15 @@
 
         <div class="col-md-8 col-sm-push-2">
 
-            <h1>Upcoming Events</h1>
+            <h1>Upcoming Events
+                <span class="pull-right">
+                    <a href="{{ route('add-event') }}" class="btn btn-success">Add Event</a>
+                </span>
+            </h1>
 
             @foreach($upcomingEvents as $event)
+
+                {{ dump($event->toArray()) }}
 
                 <div class="panel panel-default">
 

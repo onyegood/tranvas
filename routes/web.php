@@ -11,9 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@home')->name('welcome');
+
+Route::group(['middleware' => 'auth'], function () {
+
+    //Event Controller Path
+    $eventsController = "\App\Modules\Event\Http\Controllers\EventsController";
+
+    Route::get('/events/list-event', "{$eventsController}@index")->name('events');
+    Route::get('/events/view/{event}', "{$eventsController}@view")->name('view-event');
+
+    Route::get('events/add', "{$eventsController}@add")->name('add-event');
+    Route::post('events/save', "{$eventsController}@store")->name('save-event');
 });
 
-Route::get('/events/list-event', 'Event\EventController@index')->name('events');
-Route::get('/events/view/{event}', 'Event\EventController@view')->name('view-event');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

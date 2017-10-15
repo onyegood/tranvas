@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Models\Event\Event;
+use App\Modules\Event\Event;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
